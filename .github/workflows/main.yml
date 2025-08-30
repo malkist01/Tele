@@ -53,7 +53,9 @@ jobs:
 
       - name: Building kernel...
         run: |
-            elif 
+          if [ "${DEVICE}" = "mido" ]; then
             wget https://raw.githubusercontent.com/malkist01/Tele/main/mido.sh
             bash mido.sh
-            else
+          else
+            echo "Device not supported yet"
+          fi

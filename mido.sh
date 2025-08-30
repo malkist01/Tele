@@ -11,7 +11,7 @@ clang() {
     rm -rf clang
     echo "Cloning clang"
     if [ ! -d "clang" ]; then
-        git clone https://github.com/malkist01/clang-20.git -b main --depth=1 clang
+        		git clone --depth=1 https://gitlab.com/itsshashanksp/android_prebuilts_clang_host_linux-x86_clang-r547379.git --depth=1 clang
         KBUILD_COMPILER_STRING="Aosp clang 20.0"
         PATH="${PWD}/clang/bin:${PATH}"
     fi

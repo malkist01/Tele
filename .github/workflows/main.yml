@@ -53,6 +53,7 @@ jobs:
 
       - name: Building kernel...
         run: |
+            elif 
             wget https://raw.githubusercontent.com/malkist01/Tele/main/mido.sh
-
             bash mido.sh
+            else

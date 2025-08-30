@@ -9,8 +9,8 @@ clang() {
     rm -rf clang
     echo "Cloning clang"
     if [ ! -d "clang" ]; then
-        git clone https://gitlab.com/LeCmnGend/proton-clang -b clang-15 --depth=1 clang
-        KBUILD_COMPILER_STRING="Proton clang 15.0"
+        git clone https://gitlab.com/alphadroid-project/prebuilts_clang_host_linux-x86_clang-r547379.git --depth=1 clang
+        KBUILD_COMPILER_STRING="Aosp clang 20.0"
         PATH="${PWD}/clang/bin:${PATH}"
     fi
     sudo apt install -y ccache

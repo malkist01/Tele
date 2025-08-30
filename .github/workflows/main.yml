@@ -53,6 +53,6 @@ jobs:
 
       - name: Building kernel...
         run: |
-            wget https://raw.githubusercontent.com/malkist01/Tele/main/build.sh
+            wget https://raw.githubusercontent.com/malkist01/Tele/main/mido.sh
 
             bash mido.sh

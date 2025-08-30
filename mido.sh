@@ -107,10 +107,20 @@ compile() {
     make "$DEFCONFIG_DEVICE" O=out
     make -j"${PROCS}" O=out \
         ARCH=$ARCH \
-        CC="clang" \
         LLVM=1 \
-        CROSS_COMPILE=aarch64-linux-gnu- \
-        CROSS_COMPILE_ARM32=arm-linux-gnueabi-
+        LLVM_IAS=1 \
+        AR=llvm-ar \
+        NM=llvm-nm \
+        LD=ld.lld \
+        OBJCOPY=llvm-objcopy \
+        OBJDUMP=llvm-objdump \
+        STRIP=llvm-strip \
+        CC=clang \
+        CLANG_TRIPLE=aarch64-linux-gnu- \
+        CROSS_COMPILE=aarch64-linux-android- \
+	    CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
+        CONFIG_DEBUG_SECTION_MISMATCH=y \
+	    CONFIG_NO_ERROR_ON_MISMATCH=y   2>&1 | tee error.log
 
     if ! [ -a "$IMAGE" ]; then
         finderr

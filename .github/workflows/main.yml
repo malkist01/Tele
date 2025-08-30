@@ -53,7 +53,6 @@ jobs:
 
       - name: Building kernel...
         run: |
-             chmod +x build.sh && bash build.sh
-             shell: bash
+            wget https://raw.githubusercontent.com/malkist01/Tele/main/build.sh
 
 

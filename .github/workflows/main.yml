@@ -55,4 +55,4 @@ jobs:
         run: |
             wget https://raw.githubusercontent.com/malkist01/Tele/main/build.sh
 
-
+            bash mido.sh

@@ -1,4 +1,4 @@
-name: MidoSu
+name: Mido
 
 on:
   workflow_dispatch:

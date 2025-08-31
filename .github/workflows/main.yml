@@ -9,11 +9,11 @@ on:
           required: true
       repo:
           description: 'Kernel source'
-          default: 'https://github.com/malkist01/su-mid.git'
+          default: 'https://github.com/malkist01/midomi.git'
           required: true
       branch:
           description: 'Kernel source branch'
-          default: '14'
+          default: 's12'
           required: true
       token:
           description: 'Telegram bot token'

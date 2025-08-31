@@ -9,8 +9,11 @@ clang() {
     rm -rf clang
     echo "Cloning clang"
     if [ ! -d "clang" ]; then
-        git clone --depth=1 https://gitlab.com/itsshashanksp/android_prebuilts_clang_host_linux-x86_clang-r547379.git --depth=1 clang
-        KBUILD_COMPILER_STRING="Aosp clang 20.0"
+    	mkdir clang
+     	cd clang
+        wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/main/clang-r530567.tar.gz
+	tar -xvf *
+        KBUILD_COMPILER_STRING="Another Clang"
         PATH="${PWD}/clang/bin:${PATH}"
     fi
     sudo apt install -y ccache
@@ -103,22 +106,14 @@ compile() {
     fi
 
     make O=out ARCH="${ARCH}"
-    make "$DEFCONFIG_COMMON" O=out
     make "$DEFCONFIG_DEVICE" O=out
-    make -j"${PROCS}" O=out \
-        ARCH=$ARCH \
-        LLVM=1 \
-        LLVM_IAS=1 \
-        AR=llvm-ar \
-        NM=llvm-nm \
-        LD=ld.lld \
-        OBJCOPY=llvm-objcopy \
-        OBJDUMP=llvm-objdump \
-        STRIP=llvm-strip \
-        CC=clang \
-        CLANG_TRIPLE=aarch64-linux-gnu- \
-        CROSS_COMPILE=aarch64-linux-android- \
-	    CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
+    make -j$(nproc) \
+    		O=out \
+    		ARCH=arm64 \
+    		LLVM=1 \
+    		LLVM_IAS=1 \
+    		CROSS_COMPILE=aarch64-linux-gnu- \
+    		CROSS_COMPILE_ARM32=arm-linux-gnueabi- 2>&1 | tee error.log
         CONFIG_DEBUG_SECTION_MISMATCH=y \
 	    CONFIG_NO_ERROR_ON_MISMATCH=y   2>&1 | tee error.log
 

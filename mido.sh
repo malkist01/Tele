@@ -11,7 +11,7 @@ clang() {
     if [ ! -d "clang" ]; then
     	mkdir clang
      	cd clang
-        wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/main/clang-r563880.tar.gz
+        wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/0998f421320ae02fddabec8a78b91bf7620159f6/clang-r563880.tar.gz
 	tar -xvf *
         KBUILD_COMPILER_STRING="Another Clang"
         PATH="${PWD}/clang/bin:${PATH}"

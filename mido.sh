@@ -39,7 +39,7 @@ CODENAME="mido"
 export CODENAME
 # DEFCONFIG=""
 DEFCONFIG_COMMON="vendor/teletubies_defconfig"
-DEFCONFIG_DEVICE="teletubies_defconfig"
+DEFCONFIG_DEVICE=teletubies_defconfig
 export DEFCONFIG_COMMON
 export DEFCONFIG_DEVICE
 COMMIT_HASH=$(git rev-parse --short HEAD)
@@ -105,9 +105,7 @@ compile() {
         rm -rf out && mkdir -p out
     fi
 
-    make O=out ARCH="${ARCH}"
-    make "$DEFCONFIG_COMMON" O=out
-    make "$DEFCONFIG_DEVICE" O=out
+	make O=out ARCH="${ARCH}" "${DEFCONFIG_DEVICE}"
     make -j"${PROCS}" O=out \
         ARCH=$ARCH \
         CC="clang" \

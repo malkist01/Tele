@@ -23,7 +23,7 @@ DATE=$(date +'%H%M-%d%m%y')
 START=$(date +"%s")
 CODENAME=j6primelte
 DEF=teletubies_defconfig
-export CROSS_COMPILE="$(pwd)/gcc-64/bin/aarch64-linux-gnu-"
+export CROSS_COMPILE="$(pwd)/gcc-64/bin/aarch64-elf-"
 export PATH="$(pwd)/gcc-64/bin:$PATH"
 export ARCH=arm64
 export KBUILD_BUILD_USER=malkist
@@ -40,8 +40,10 @@ function push() {
 }
 # Compile plox
 function compile() {
-     make -C $(pwd) O=out ${DEF}
-     make -j64 -C $(pwd) O=out
+	make -j$(nproc --all) O=out 
+     make -j $(nproc --all) O=out ${DEF}
+     CONFIG_DEBUG_SECTION_MISMATCH=y 
+	CONFIG_NO_ERROR_ON_MISMATCH=y   2>&1 | tee error.log     
 
      if ! [ -a "$IMAGE" ]; then
         finderr

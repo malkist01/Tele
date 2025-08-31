@@ -8,8 +8,8 @@ clang() {
     rm -rf clang
     echo "Cloning clang"
     if [ ! -d "clang" ]; then
-        wget "$(curl -s https://raw.githubusercontent.com/khuza08/snapdragon-clang/main/releases/link.txt)" -O "sdclang19.x.tgz"
-rm -rf clang && mkdir sdclang && tar -xvf sdclang19.x.tgz -C sdclang
+        wget "$(curl -s https://release-assets.githubusercontent.com/github-production-release-asset/321672556/a550d16e-175b-4a0b-a3e7-73d082c9c0b3?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-08-31T19%3A42%3A11Z&rscd=attachment%3B+filename%3Deva-gcc-arm64-31082025.xz&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-08-31T18%3A41%3A30Z&ske=2025-08-31T19%3A42%3A11Z&sks=b&skv=2018-11-09&sig=fb3%2FWupOxmAhqzTDsUPz%2Fzz%2BnZv1w9soLWnNpC0xdlg%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc1NjY2NjQ5MSwibmJmIjoxNzU2NjY2MTkxLCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.Ww9PrXWcpN8vB8ZVGP3pKmPyRBUypjFTUETjUAh30P8&response-content-disposition=attachment%3B%20filename%3Deva-gcc-arm64-31082025.xz&response-content-type=application%2Foctet-stream)" -O "eva-gcc-arm64-31082025.xz"
+rm -rf clang && mkdir sdclang && tar -xvf eva-gcc-arm64-31082025.xz -C sdclang
         KBUILD_COMPILER_STRING="snapdragon clang"
         PATH="${PWD}/sdclang/bin:${PATH}"
     fi

@@ -1,4 +1,4 @@
-name: Midosu
+name: Mido
 
 on:
   workflow_dispatch:
@@ -53,8 +53,8 @@ jobs:
       - name: Building kernel...
         run: |
           if [ "${DEVICE}" = "mido" ]; then
-            wget https://raw.githubusercontent.com/malkist01/Tele/main/midosu.sh
-            bash midosu.sh
+            wget https://raw.githubusercontent.com/malkist01/Tele/main/mido.sh
+            bash mido.sh
           else
             echo "Device not supported yet"
           fi

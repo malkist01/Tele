@@ -4,7 +4,6 @@
 rm -rf kernel
 git clone $REPO -b $BRANCH kernel
 cd kernel
-
 clang() {
     rm -rf clang
     echo "Cloning clang"

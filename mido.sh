@@ -106,14 +106,14 @@ compile() {
     fi
 
     make O=out ARCH="${ARCH}"
+    make "$DEFCONFIG_COMMON" O=out
     make "$DEFCONFIG_DEVICE" O=out
-    make -j$(nproc) \
-    		O=out \
-    		ARCH=arm64 \
-    		LLVM=1 \
-    		LLVM_IAS=1 \
-    		CROSS_COMPILE=aarch64-linux-gnu- \
-    		CROSS_COMPILE_ARM32=arm-linux-gnueabi- 2>&1 | tee error.log
+    make -j"${PROCS}" O=out \
+        ARCH=$ARCH \
+        CC="clang" \
+        LLVM=1 \
+        CROSS_COMPILE=aarch64-linux-gnu- \
+        CROSS_COMPILE_ARM32=arm-linux-gnueabi- 2>&1 | tee error.log
         CONFIG_DEBUG_SECTION_MISMATCH=y \
 	    CONFIG_NO_ERROR_ON_MISMATCH=y   2>&1 | tee error.log
 

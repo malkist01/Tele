@@ -8,8 +8,8 @@ clang() {
     rm -rf clang
     echo "Cloning clang"
     if [ ! -d "clang" ]; then
-        		git clone --depth=1 https://gitlab.com/itsshashanksp/android_prebuilts_clang_host_linux-x86_clang-r547379.git --depth=1 clang
-        KBUILD_COMPILER_STRING="Aosp clang 20.0"
+        		git clone --depth=1 https://gitlab.com/Panchajanya1999/azure-clang.git -b main clang
+        KBUILD_COMPILER_STRING="Azzura clang"
         PATH="${PWD}/clang/bin:${PATH}"
     fi
     sudo apt install -y ccache

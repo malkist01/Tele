@@ -9,11 +9,11 @@ on:
           required: true
       repo:
           description: 'Kernel source'
-          default: 'https://github.com/malkist01/kernel_xiaomi_msm8953-4.9.git'
+          default: 'https://github.com/malkist01/mid.git'
           required: true
       branch:
           description: 'Kernel source branch'
-          default: '17.1'
+          default: 'normal'
           required: true
       token:
           description: 'Telegram bot token'

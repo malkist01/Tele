@@ -8,9 +8,10 @@ clang() {
     rm -rf clang
     echo "Cloning clang"
     if [ ! -d "clang" ]; then
-        		git clone --depth=1 https://gitlab.com/Panchajanya1999/azure-clang.git -b main clang
-        KBUILD_COMPILER_STRING="Azzura clang"
-        PATH="${PWD}/clang/bin:${PATH}"
+        wget "$(curl -s https://raw.githubusercontent.com/khuza08/snapdragon-clang/main/releases/link.txt)" -O "sdclang19.x.tgz"
+rm -rf clang && mkdir sdclang && tar -xvf sdclang19.x.tgz -C sdclang
+        KBUILD_COMPILER_STRING="snapdragon clang"
+        PATH="${PWD}/sdclang/bin:${PATH}"
     fi
     sudo apt install -y ccache
     echo "Done"
